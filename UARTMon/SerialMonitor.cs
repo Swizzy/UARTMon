@@ -18,7 +18,7 @@
             Dispose(false);
         }
 
-        public void Dispose(bool disposing = true) {
+        private void Dispose(bool disposing = true) {
             if(disposing)
                 _port.DataReceived -= SerialPortDataReceived;
             if(_port == null)
@@ -80,6 +80,10 @@
             var dwSettableBaud = (Int32) tmp.GetValue(p);
             _port.Close();
             Settings.UpdateBaudRateCollection(dwSettableBaud);
+        }
+
+        public void SetSpeed(bool lowspeed) {
+            Settings.BaudRate = lowspeed ? 38400 : 115200;
         }
     }
 

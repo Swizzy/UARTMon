@@ -1,17 +1,16 @@
-﻿namespace UARTMon
-{
+﻿namespace UARTMon {
     using System;
     using System.Diagnostics;
     using System.IO;
     using System.Reflection;
     using System.Text;
 
-    class Program
-    {
-        static bool _dolog;
-        static StreamWriter _logger;
-        static void Main(string[] args) {
+    internal class Program {
+        private static bool _dolog, _lowspeed;
+        private static StreamWriter _logger;
+        private static string _logname;
 
+        private static void Main(string[] args) {
             if(args.Length < 1) {
                 Console.WriteLine("You must specify COM port to use!");
                 return;
@@ -30,14 +29,22 @@
                 return;
             }
             if(args.Length >= 2) {
-                _logger = new StreamWriter(args[1]) {
-                                                    AutoFlush = true
-                                                    };
-                _dolog = true;
+                foreach(var s in args) {
+                    if(s.Equals("-lowspeed"))
+                        _lowspeed = true;
+                    else if(!_dolog) {
+                        _logger = new StreamWriter(s) {
+                                                      AutoFlush = true
+                                                      };
+                        _logname = s;
+                        _dolog = true;
+                    }
+                }
             }
             Console.WriteLine("Starting to listen on port: {0}", args[0]);
             if(_dolog)
-                Console.WriteLine("A Log will be saved to: {0}", args[1]);
+                Console.WriteLine("A Log will be saved to: {0}", _logname);
+            monitor.SetSpeed(_lowspeed);
             monitor.StartListening();
             string line;
             do
@@ -50,7 +57,7 @@
         private static void MonitorOnNewSerialDataRecieved(object sender, SerialDataEventArgs e) {
             var tmp = Encoding.UTF8.GetString(e.Data);
             Console.Write(tmp);
-            if (_dolog && _logger != null)
+            if(_dolog && _logger != null)
                 _logger.Write(tmp);
         }
     }

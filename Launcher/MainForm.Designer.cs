@@ -34,13 +34,14 @@
             this.button2 = new System.Windows.Forms.Button();
             this.dolog = new System.Windows.Forms.CheckBox();
             this.updbtn = new System.Windows.Forms.Button();
+            this.lowspeed = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // comport
             // 
             this.comport.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comport.FormattingEnabled = true;
-            this.comport.Location = new System.Drawing.Point(12, 12);
+            this.comport.Location = new System.Drawing.Point(12, 35);
             this.comport.Name = "comport";
             this.comport.Size = new System.Drawing.Size(186, 21);
             this.comport.TabIndex = 0;
@@ -48,7 +49,7 @@
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(12, 70);
+            this.button1.Location = new System.Drawing.Point(12, 93);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(236, 40);
             this.button1.TabIndex = 1;
@@ -58,7 +59,7 @@
             // 
             // logname
             // 
-            this.logname.Location = new System.Drawing.Point(33, 43);
+            this.logname.Location = new System.Drawing.Point(33, 67);
             this.logname.Name = "logname";
             this.logname.Size = new System.Drawing.Size(165, 20);
             this.logname.TabIndex = 2;
@@ -67,7 +68,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(204, 41);
+            this.button2.Location = new System.Drawing.Point(204, 64);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(44, 23);
             this.button2.TabIndex = 3;
@@ -78,7 +79,7 @@
             // dolog
             // 
             this.dolog.AutoSize = true;
-            this.dolog.Location = new System.Drawing.Point(12, 45);
+            this.dolog.Location = new System.Drawing.Point(12, 70);
             this.dolog.Name = "dolog";
             this.dolog.Size = new System.Drawing.Size(15, 14);
             this.dolog.TabIndex = 4;
@@ -87,7 +88,7 @@
             // updbtn
             // 
             this.updbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.updbtn.Location = new System.Drawing.Point(204, 12);
+            this.updbtn.Location = new System.Drawing.Point(204, 35);
             this.updbtn.Name = "updbtn";
             this.updbtn.Size = new System.Drawing.Size(44, 23);
             this.updbtn.TabIndex = 3;
@@ -95,11 +96,22 @@
             this.updbtn.UseVisualStyleBackColor = true;
             this.updbtn.Click += new System.EventHandler(this.UpdbtnClick);
             // 
+            // lowspeed
+            // 
+            this.lowspeed.AutoSize = true;
+            this.lowspeed.Location = new System.Drawing.Point(12, 12);
+            this.lowspeed.Name = "lowspeed";
+            this.lowspeed.Size = new System.Drawing.Size(190, 17);
+            this.lowspeed.TabIndex = 5;
+            this.lowspeed.Text = "Lowspeed (Cygnos/Demon speed)";
+            this.lowspeed.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(260, 122);
+            this.ClientSize = new System.Drawing.Size(260, 145);
+            this.Controls.Add(this.lowspeed);
             this.Controls.Add(this.dolog);
             this.Controls.Add(this.updbtn);
             this.Controls.Add(this.button2);
@@ -121,6 +133,7 @@
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.CheckBox dolog;
         private System.Windows.Forms.Button updbtn;
+        private System.Windows.Forms.CheckBox lowspeed;
     }
 }
 

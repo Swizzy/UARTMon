@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
-
-namespace WindowsFormsApplication1
-{
+﻿namespace WindowsFormsApplication1 {
+    using System;
+    using System.Windows.Forms;
     using launcher;
 
-    static class Program
-    {
+    internal static class Program {
         /// <summary>
-        /// The main entry point for the application.
+        ///   The main entry point for the application.
         /// </summary>
-        [STAThread]
-        static void Main()
-        {
+        [STAThread] private static void Main() {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

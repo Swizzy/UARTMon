@@ -5,6 +5,7 @@
     using System.IO.Ports;
     using System.Reflection;
     using System.Windows.Forms;
+    using launcher.Properties;
 
     internal sealed partial class MainForm : Form {
         public MainForm() {
@@ -32,9 +33,10 @@
         private void Button1Click(object sender, EventArgs e) {
             File.WriteAllBytes("UARTMon.exe", GetBuiltInData("UARTMon.exe"));
             var procinfo = new ProcessStartInfo {
-                                                FileName = "UARTMon.exe",
-                                                Arguments = dolog.Checked ? string.Format("{0} \"{1}\"", comport.Text, logname.Text) : comport.Text
+                                                FileName = "UARTMon.exe", Arguments = dolog.Checked ? string.Format("{0} \"{1}\"", comport.Text, logname.Text) : comport.Text
                                                 };
+            if(lowspeed.Checked)
+                procinfo.Arguments += " -lowspeed";
             Process.Start(procinfo);
             Close();
         }
@@ -45,7 +47,7 @@
 
         private void Button2Click(object sender, EventArgs e) {
             var sfd = new SaveFileDialog {
-                                         FileName = logname.Text, Title = "Select where to save the log..."
+                                         FileName = logname.Text, Title = Resources.MainForm_Button2Click_Select_where_to_save_the_log___
                                          };
             if(sfd.ShowDialog() == DialogResult.OK)
                 logname.Text = sfd.FileName;
