@@ -27,7 +27,11 @@
         }
 
         private void UpdatePorts() {
-            comport.DataSource = SerialPort.GetPortNames();
+            
+            comport.Items.Clear();
+            comport.Items.Add("demon");
+            comport.Items.AddRange(SerialPort.GetPortNames());
+            comport.SelectedIndex = 0;
         }
 
         private void Button1Click(object sender, EventArgs e) {
